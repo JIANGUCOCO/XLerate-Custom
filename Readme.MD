@@ -1,256 +1,140 @@
-# XLerate
+<div align="center">
 
+# XLerate Custom
 
-![XLerate](https://github.com/omegarhovega/XLerate/blob/master/XLerate/docs/images/XLerate.png)
+**Macabacus-inspired keyboard workflows for Excel financial modeling**
 
-XLerate is an Excel add-in for financial modeling work. It adds a dedicated **XLerate** ribbon tab with tools for tracing formulas, checking horizontal consistency, cycling through modeling formats, speeding up fill actions, and managing workbook-specific XLerate settings.
+An experimental, Mac-focused customization of the open-source [XLerate](https://github.com/omegarhovega/XLerate) Office.js add-in.
+Spend less time navigating the ribbon—and more time building, checking, and understanding models.
 
-If you used the older XLerate VBA-based add-in, this repository now ships the **new Office.js-based version** . The older VBA implementation is still present in the repo for reference but should be treated as legacy.
+[![CI](https://github.com/JIANGUCOCO/XLerate-Custom/actions/workflows/ci.yml/badge.svg)](https://github.com/JIANGUCOCO/XLerate-Custom/actions/workflows/ci.yml)
+[![Deploy Pages](https://github.com/JIANGUCOCO/XLerate-Custom/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/JIANGUCOCO/XLerate-Custom/actions/workflows/deploy-pages.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+![Status: experimental](https://img.shields.io/badge/Status-experimental-orange.svg)
 
-## What XLerate Does
+[What's new](#whats-new) · [Shortcuts](#keyboard-shortcuts) · [Install on Mac](#installation-mac-excel) · [Demo](#demo) · [Troubleshooting](#troubleshooting)
 
-XLerate is built for repetitive spreadsheet tasks that come up constantly in financial models, operating models, review files, and audit passes.
+</div>
 
-Core features include:
+> [!IMPORTANT]
+> **Project status: experimental.** The added keyboard mappings are implemented in the source and shortcut configuration; they have **not** all been confirmed to work in Excel for Mac (Office LTSC 2024). The customized ribbon has also displayed as blank in some local tests. Check both ribbon commands and shortcuts in a disposable workbook before using this add-in on live financial models. A green CI/Pages badge means the code pipeline ran—not that Excel client behavior has been verified.
 
-- **Trace Precedents / Trace Dependents**: open a keyboard-friendly dialog to inspect formula relationships across sheets and multiple levels deep.
-- **Switch Sign**: flip the sign of numeric cells or formulas across a selection.
-- **Smart Fill Right**: extend a formula rightward to the detected boundary.
-- **Horizontal Check**: mark formulas as consistent or inconsistent relative to neighbors.
-- **Cycle Number / Date / Cell / Text formats**: move through preset formatting styles quickly.
-- **Auto-color**: apply semantic colors to values and formulas.
-- **Insert CAGR**: insert a CAGR formula based on the numeric series immediately to the left.
-- **Settings workspace**: manage XLerate presets and workbook-specific defaults in the side pane.
+## Why this project?
 
-Users can edit and save their own presets for:
+Building three-statement models, operating forecasts, or valuation workbooks involves constant formatting, formula tracing, and checking. XLerate already implements useful modeling actions; this customization experiments with making more of those **existing features keyboard-accessible on Mac**.
 
-- number formats
-- date formats
-- cell formats
-- text styles
-- auto-color behavior
-- trace defaults
+It is inspired by the **keyboard-first productivity approach** of Macabacus, but it is **not Macabacus**, is not affiliated with Macabacus, and does not copy Macabacus proprietary code.
 
-## How the Main Functions Work
+## What's new?
 
-### Trace Precedents / Trace Dependents
+| Area | Original XLerate | XLerate Custom |
+|:--|:--|:--|
+| Core financial-modeling operations | Formula tracing, sign switching, formatting cycles, checks, auto-color, CAGR | **Preserved** existing XLerate implementations |
+| Keyboard access | Shortcuts for selected formatting and fill actions | **Six additional shortcut bindings** for existing analysis / formatting actions |
+| Mac shortcuts | Primarily shared key combinations | **Mac-specific Command + Option + Shift** combinations for the six new bindings |
+| Deployment | Upstream hosted resources | Custom GitHub Pages deployment with GitHub Actions |
+| Development focus | General add-in workflow | Experimental keyboard-first Mac Excel workflow |
 
-- Starts from the active cell.
-- Opens a keyboard-friendly dialog for navigating relationships.
-- Can follow formula links across worksheets.
-- Loads only direct relationships initially; deeper branches load when expanded.
-- Small branches may be prefetched for instant expansion, while large referenced
-  ranges stay summarized and can be opened in bounded pages.
-- A1-style cells, ranges, and sheet-qualified references shown inside formulas
-  are clickable and navigate Excel without closing the trace dialog.
-- Workbook/worksheet named ranges and fully qualified Excel Table references
-  are also clickable. External workbook links are identified with an
-  explanatory non-clickable style because Office.js cannot select another
-  workbook's range.
-- Can inspect multiple dependency levels without scanning unrelated worksheets.
-- Best used on formula cells where you want to understand what feeds a number or what depends on it.
+**Scope:** 12 shortcut mappings are currently configured. This is an extension of the input workflow, **not** six newly invented calculation engines or a complete Macabacus replacement.
 
-### Switch Sign
+## Keyboard shortcuts
 
-- Works on the current selection.
-- Numeric constants are negated.
-- Formulas are wrapped so the resulting value flips sign.
-- Text cells are left unchanged.
+### Standard XLerate actions (retained)
 
-### Smart Fill Right
+| Mac keys | Action | What it does |
+|:--|:--|:--|
+| `⌃ ⇧ 1` | Cycle number formats | Rotate through configured number formats |
+| `⌃ ⇧ 2` | Cycle cell formats | Rotate through preset cell formatting |
+| `⌃ ⇧ 3` | Cycle date formats | Rotate through preset date formats |
+| `⌃ ⇧ 4` | Cycle text styles | Rotate through text style presets |
+| `⌃ ⇧ R` | Smart Fill Right | Extend the active formula to a detected right boundary |
+| `⌃ ⇧ 0` | Reset format settings | Reset workbook-specific format settings |
 
-- Works from the **active cell**.
-- The active cell must contain a formula.
-- XLerate looks up to **three rows above** the active row to find a usable reference row.
-- It fills rightward only when it can detect a valid boundary from that data above.
-- If there is no suitable row above, or if the active cell is not a formula, the action will not fill.
+### Additional bindings in XLerate Custom
 
-In practice, Smart Fill Right works best when:
+| Mac keys | Action | Modeling use |
+|:--|:--|:--|
+| `⌘ ⌥ ⇧ Q` | Trace Precedents | Investigate the inputs behind a calculation |
+| `⌘ ⌥ ⇧ W` | Trace Dependents | See where an assumption flows through a model |
+| `⌘ ⌥ ⇧ S` | Switch Sign | Flip signs on selected amounts / formulas |
+| `⌘ ⌥ ⇧ H` | Horizontal Check | Spot inconsistent copy-across formulas |
+| `⌘ ⌥ ⇧ A` | Auto-color | Apply input / formula / link color conventions |
+| `⌘ ⌥ ⇧ G` | Insert CAGR | Build a CAGR formula from the adjacent data series |
 
-- the row above (or one of the next two rows above) contains a clear contiguous block of cells that defines the intended fill width
-- the active cell is already the leftmost formula you want to extend
-- the area above is not broken by merges in the boundary region
+**Key legend:** `⌃` Control · `⌥` Option · `⇧` Shift · `⌘` Command. The new Mac mappings reflect the latest `XLerate/shortcuts.json` configuration. **Configured ≠ independently verified**; Excel and macOS may intercept a combination or require resolution of a shortcut conflict. Windows/default shortcuts for the six additions are `Ctrl + Alt + Shift + Q/W/S/H/A/G`.
 
-### Horizontal Check
+## Core features
 
-- Works on formulas in the selected range.
-- Compares formulas horizontally to identify copy-across inconsistencies.
-- Marks cells as visually consistent or inconsistent relative to their neighbors.
-- Useful for finding broken formulas in model rows.
+| Feature | How to use it in a worksheet |
+|:--|:--|
+| **Trace Precedents / Dependents** | Select a formula or assumption, then run the matching command to inspect source or downstream references. |
+| **Switch Sign** | Select numeric constants or formulas to reverse their sign; text remains unchanged. |
+| **Smart Fill Right** | Start from a **formula cell**. XLerate looks up to three rows above for a continuous reference area that defines the fill boundary. |
+| **Horizontal Check** | Select a row of formulas and inspect possible breaks in copy-across patterns. |
+| **Cycle formats** | Apply consecutive number, date, cell, or text presets, configurable in the task pane. |
+| **Auto-color** | Color selected populated cells by model semantics (inputs, formulas, sheet references and other categories). |
+| **Insert CAGR** | Select an empty result cell immediately to the right of a suitable consecutive numeric series. |
 
-### Cycle Number / Date / Cell / Text Formats
+## Demo
 
-- Works on the current selection.
-- Applies the next preset in the configured list.
-- If the current cell formatting does not match a known preset, XLerate applies the first preset in that category.
-- Presets can be customized in the side pane settings workspace.
+**Real Excel demo footage is being prepared.** The existing screenshots from early development showed a blank Custom ribbon, so they are intentionally **not presented as a working-feature demonstration**.
 
-### Auto-color
+A short before/after screen recording will demonstrate:
 
-- Works on the current selection.
-- Applies semantic colors based on what a cell represents.
-- Distinguishes between inputs, formulas, links, hyperlinks, and related categories.
-- Best used on populated ranges rather than blank areas.
+1. **Switch Sign** — select `100`, run the key combination, verify `-100`.
+2. **Trace Precedents** — select `=B2*C2`, open the formula trace dialog.
+3. **Auto-color / Horizontal Check** — show coloring and a deliberately inconsistent projection formula.
 
-### Insert CAGR
+See [the demo capture guide](assets/demo/README.md) for a one-minute storyboard and the exact screenshot filenames. When verified captures are available, add these images to `assets/demo/` and uncomment the image lines below.
 
-- Works from the **active cell**, which becomes the destination for the CAGR formula.
-- XLerate looks immediately to the **left** and scans the same row for a contiguous numeric series.
-- It uses that series to build the CAGR formula automatically.
-- At least **two numeric cells** are required for a meaningful CAGR.
-- If there is no valid contiguous numeric series directly to the left, nothing is inserted.
+<!-- Verified assets only; do not publish mockups as Excel screenshots.
+![XLerate Custom ribbon in Excel for Mac](assets/demo/ribbon.png)
+![Switch Sign before and after](assets/demo/switch-sign.png)
+![Formula tracing example](assets/demo/trace-precedents.png)
+-->
 
-In practice, Insert CAGR works best when:
+## Installation: Mac Excel
 
-- the destination cell is placed immediately to the right of a row of historical values
-- the values to the left are contiguous and numeric
-- text cells or blanks do not interrupt the series
+This is a **sideloaded Office.js add-in**, not a classic `.xlam` file. These steps are for testing your own build; the initial source deployment has been configured for this repository.
 
-### Settings Side Pane
+1. Confirm the [Deploy Pages workflow](https://github.com/JIANGUCOCO/XLerate-Custom/actions/workflows/deploy-pages.yml) completed successfully. Confirm the [hosted task pane](https://jiangucoco.github.io/XLerate-Custom/taskpane.html) opens in your browser.
+2. Download [**`manifest-install-on-mac.xml`**](manifest-install-on-mac.xml) using GitHub's **Raw / Download raw file** control (save it as `.xml`, not `.txt`).
+3. In Finder use `Shift + Command + G` and open:
 
-- The side pane is for configuring XLerate behavior rather than duplicating the worksheet actions.
-- You can show it when you want to edit presets or defaults, then hide it again while working in the sheet.
-- It lets you manage workbook-specific settings for format cycles, auto-color presets, and trace defaults.
+   ```text
+   ~/Library/Containers/com.microsoft.Excel/Data/Documents/wef/
+   ```
 
-## Requirements
+   Create the `wef` folder if needed. Place the downloaded XML file there.
+4. Quit Excel completely (`Command + Q`), then restart Excel and open a workbook. Find the sideloaded add-in / its ribbon entry.
+5. Test a harmless command on a **copy of a workbook**. Where an Office shortcut-conflict dialog appears, choose the XLerate Custom action you intend to use.
 
-Recommended environment:
+**Important:** If you have both original XLerate and XLerate Custom installed, they may display similarly named ribbon tabs. Temporarily remove the old **original** manifest from `wef` to isolate conflicts, but keep a backup. The add-in name and ribbon tab label can differ. Do not use Excel's classic **Tools → Excel Add-ins → Browse** dialog for this Office.js XML manifest.
 
-- Excel Desktop on **Windows** or **Mac**
-- A modern Microsoft 365 Excel build
+### Build from source
 
-Notes:
+```bash
+cd XLerate
+npm ci
+npm run build
+```
 
-- XLerate is now an **Office add-in**, not an `.xlam` macro add-in.
-- Excel on the web may load, but Excel Desktop is the primary target.
-- Excel mobile is not supported.
-
-## Install
-
-### Get the Manifest
-
-Download the manifest from one of these locations:
-
-- [manifest.xml](https://omegarhovega.github.io/XLerate/manifest.xml)
-- [XLerate/manifest.xml](./XLerate/manifest.xml)
-
-## How to Install in Excel
-
-For Excel Desktop, the reliable installation path is via a **shared-folder add-in catalog**.
-
-### Shared-folder install flow
-
-1. Download `manifest.xml`.
-2. Put the manifest into a folder and share with yourself, or into a shared/network folder that will act as the add-in catalog. For this see [Create a network shared folder catalog for task pane and content add-ins](https://learn.microsoft.com/en-us/office/dev/add-ins/testing/create-a-network-shared-folder-catalog-for-task-pane-and-content-add-ins)
-3. In Excel, open **Trust Center** settings and add that shared folder as a trusted add-in catalog.
-4. Restart Excel if required.
-5. Go to **Home** → **Add-ins**.
-6. Open **+ More Add-ins**.
-7. Open the **Shared Folder** section.
-8. Select XLerate from the shared-folder catalog.
-9. The **XLerate** tab will open in the ribbon.
-
-### Important note
-
-The manifest is not installed by simply placing it in an arbitrary folder on your machine. Excel must be told to trust and use that folder as an add-in catalog through Trust Center settings.
-
-If Excel asks which action should own a shortcut such as `Ctrl+Shift+1`, choose **XLerate** for the XLerate actions you want.
-
-If you need to reset those choices later, use Excel’s search box and run:
-
-- `Reset Office Add-ins shortcut preferences`
-
-## First Use
-
-After installation:
-
-1. Open a workbook.
-2. Click the **XLerate** ribbon tab.
-3. Try **Cycle Number**, **Smart Fill Right**, or **Trace Precedents**.
-4. Open **Show Task Pane** to access workbook settings.
-
-Most worksheet actions are ribbon-first. The side pane is mainly for settings and supporting UI; it can be shown when needed and hidden again when you want to work with more sheet space.
-
-## Keyboard Shortcuts
-
-XLerate supports these shortcuts:
-
-- `Ctrl+Shift+1`: Cycle Number Formats
-- `Ctrl+Shift+2`: Cycle Cell Formats
-- `Ctrl+Shift+3`: Cycle Date Formats
-- `Ctrl+Shift+4`: Cycle Text Styles
-- `Ctrl+Shift+R`: Smart Fill Right
-
-On first use, Excel may show a conflict dialog if one of these shortcuts is already associated with a built-in Excel feature. Choose the XLerate action if you want XLerate to take precedence on that machine.
-
-For frequent use, it is also a good idea to add your most-used XLerate commands to Excel’s **Quick Access Toolbar**. That gives you fast keyboard access through Excel’s own QAT workflow in addition to the default XLerate shortcuts.
-
-## Usage Notes
-
-- Formatting and worksheet actions are designed to work on the current selection.
-- Trace tools operate on the active cell and can follow relationships across worksheets through multiple dependency levels.
-- Many actions are intended to be a single Excel undo step.
-- Workbook settings are stored as XLerate settings for that workbook, so different workbooks can use different presets.
+GitHub Actions builds and hosts the `XLerate/dist` output over HTTPS. To deploy changes, commit to `main` and review **Actions → Deploy Pages**. See [deployment notes](DEPLOY_README.md) for repository-specific details.
 
 ## Troubleshooting
 
-### The XLerate tab does not appear
+| Symptom | Check |
+|:--|:--|
+| **Custom ribbon tab is blank** | This is a known unresolved Mac test issue. Do not assume a successful GitHub Pages build proves ribbon commands are registered correctly. Inspect the manifest, icon/resource URLs, Office client cache, and task pane command registration. |
+| **Task pane opens, shortcuts do nothing** | Test the corresponding ribbon action first, check shortcut conflicts, verify the deployed `shortcuts.json` is the new build, and distinguish Command from Control. |
+| **Two XLerate tabs** | The original and customized manifests may both be registered; isolate them while testing. |
+| **Shortcut invokes Excel instead** | Resolve Excel's shortcut conflict dialog for that specific combination; if available, use Office's **Reset Office Add-in Shortcut Preferences** command to choose again. |
+| **Changes not appearing** | Confirm Pages deployment succeeded, then fully quit and restart Excel; cached manifest or assets may persist. |
 
-- Make sure the add-in manifest was successfully installed.
-- Close and reopen Excel.
-- Remove and reinstall the manifest if needed.
+Found a bug? Please [open an issue](https://github.com/JIANGUCOCO/XLerate-Custom/issues) with Excel edition/version, macOS version, exact key combination, and screenshots or steps to reproduce. **Never post credentials or personal workbook data.**
 
-### A shortcut runs the wrong Excel command
+## Credits & licensing
 
-- Choose the XLerate action in the conflict dialog when Excel prompts you.
-- If Excel already saved the wrong preference, run:
-  - `Reset Office Add-ins shortcut preferences`
+Built on the original **[XLerate](https://github.com/omegarhovega/XLerate)** by **omegarhovega**, licensed under the [MIT License](LICENSE). Credit and copyright notices are retained. The original implementation supplies the modeling functions; this repository customizes shortcut registration and deployment for an experimental Mac workflow.
 
-### The add-in does not load after an update
-
-- Close Excel fully and reopen it.
-- Remove and reinstall the add-in manifest if Excel is still using a stale registration.
-
-## Repository Layout
-
-This repository contains:
-
-- `src/` — the legacy VBA implementation kept for reference/parity work
-- `XLerate/` — the current Office.js + TypeScript add-in
-
-All active product development happens in `XLerate/`.
-
-## Development
-
-From the repo root:
-
-1. `cd XLerate`
-2. `npm install`
-3. `npm run dev-server`
-4. In another terminal: `npm start`
-5. Open Excel Desktop and sideload the development manifest
-
-Notes:
-
-- `manifest.dev.xml` is for local sideload development.
-- `manifest.xml` is the production manifest intended for hosted distribution.
-
-## Validation
-
-Primary automated gate:
-
-- `npm run ci:all`
-
-That runs:
-
-- `typecheck:core`
-- `typecheck:harness`
-- `lint:harness`
-- `arch:check`
-- `test:core`
-- production and local manifest validation
-- production build
-
-For changes that touch live Excel runtime boundaries or manifest/ribbon wiring, also use:
-
-- [sideload-checklist.md](./sideload-checklist.md)
+**Macabacus** is referenced only as inspiration for efficient, keyboard-led modeling workflows. This project is not affiliated with or endorsed by Macabacus, Microsoft, or the original XLerate author.
