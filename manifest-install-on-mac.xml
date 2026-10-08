@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="TaskPaneApp">
+  <Id>8a7d5c64-8d18-4fe3-8c94-bc116d9c9250</Id>
+  <Version>1.1.0.0</Version>
+  <ProviderName>XLerate</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="XLerate Custom"/>
+  <Description DefaultValue="Excel add-in for financial modeling workflows, auditing, formatting cycles, and trace navigation."/>
+  <IconUrl DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icon-64.png"/>
+  <SupportUrl DefaultValue="https://github.com/JIANGUCOCO/XLerate-Custom/issues"/>
+  <AppDomains>
+    <AppDomain>https://jiangucoco.github.io</AppDomain>
+  </AppDomains>
+  <Hosts>
+    <Host Name="Workbook"/>
+  </Hosts>
+  <DefaultSettings>
+    <SourceLocation DefaultValue="https://jiangucoco.github.io/XLerate-Custom/taskpane.html"/>
+  </DefaultSettings>
+  <Permissions>ReadWriteDocument</Permissions>
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Hosts>
+      <Host xsi:type="Workbook">
+        <Runtimes>
+          <Runtime resid="Taskpane.Url" lifetime="long"/>
+        </Runtimes>
+        <DesktopFormFactor>
+          <GetStarted>
+            <Title resid="GetStarted.Title"/>
+            <Description resid="GetStarted.Description"/>
+            <LearnMoreUrl resid="GetStarted.LearnMoreUrl"/>
+          </GetStarted>
+          <FunctionFile resid="Taskpane.Url"/>
+          <ExtensionPoint xsi:type="PrimaryCommandSurface">
+            <CustomTab id="XLerateTab">
+              <Group id="FormulasGroup">
+                <Label resid="FormulasGroup.Label"/>
+                <Icon>
+                  <bt:Image size="16" resid="FmlGrpIc.16x16"/>
+                  <bt:Image size="32" resid="FmlGrpIc.32x32"/>
+                  <bt:Image size="80" resid="FmlGrpIc.80x80"/>
+                </Icon>
+                <Control xsi:type="Button" id="TracePrecedentsDialogButton">
+                  <Label resid="TracePrecBtn.Label"/>
+                  <Supertip>
+                    <Title resid="TracePrecBtn.Label"/>
+                    <Description resid="TracePrecBtn.Tooltip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="TracePrecIc.16x16"/>
+                    <bt:Image size="32" resid="TracePrecIc.32x32"/>
+                    <bt:Image size="80" resid="TracePrecIc.80x80"/>
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>openTracePrecedentsDialog</FunctionName>
+                  </Action>
+                </Control>
+                <Control xsi:type="Button" id="TraceDependentsDialogButton">
+                  <Label resid="TraceDepBtn.Label"/>
+                  <Supertip>
+                    <Title resid="TraceDepBtn.Label"/>
+                    <Description resid="TraceDepBtn.Tooltip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="TraceDepIc.16x16"/>
+                    <bt:Image size="32" resid="TraceDepIc.32x32"/>
+                    <bt:Image size="80" resid="TraceDepIc.80x80"/>
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>openTraceDependentsDialog</FunctionName>
+                  </Action>
+                </Control>
+                <Control xsi:type="Button" id="SwitchSignBtn">
+                  <Label resid="SwitchSignBtn.Label"/>
+                  <Supertip>
+                    <Title resid="SwitchSignBtn.Label"/>
+                    <Description resid="SwitchSignBtn.Tooltip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="SwSignIc.16x16"/>
+                    <bt:Image size="32" resid="SwSignIc.32x32"/>
+                    <bt:Image size="80" resid="SwSignIc.80x80"/>
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>runSwitchSign</FunctionName>
+                  </Action>
+                </Control>
+                <Control xsi:type="Button" id="SmartFillBtn">
+                  <Label resid="SmartFillBtn.Label"/>
+                  <Supertip>
+                    <Title resid="SmartFillBtn.Label"/>
+                    <Description resid="SmartFillBtn.Tooltip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="SmFillIc.16x16"/>
+                    <bt:Image size="32" resid="SmFillIc.32x32"/>
+                    <bt:Image size="80" resid="SmFillIc.80x80"/>
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>runSmartFillRight</FunctionName>
+                  </Action>
+                </Control>
+                <Control xsi:type="Button" id="InsertCagrBtn">
+                  <Label resid="InsertCagrBtn.Label"/>
+                  <Supertip>
+                    <Title resid="InsertCagrBtn.Label"/>
+                    <Description resid="InsertCagrBtn.Tooltip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16x16"/>
+                    <bt:Image size="32" resid="Icon.32x32"/>
+                    <bt:Image size="80" resid="Icon.80x80"/>
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>runInsertCagr</FunctionName>
+                  </Action>
+                </Control>
+              </Group>
+              <Group id="AuditingGroup">
+                <Label resid="AuditingGroup.Label"/>
+                <Icon>
+                  <bt:Image size="16" resid="AudGrpIc.16x16"/>
+                  <bt:Image size="32" resid="AudGrpIc.32x32"/>
+                  <bt:Image size="80" resid="AudGrpIc.80x80"/>
+                </Icon>
+                <Control xsi:type="Button" id="ConsistencyBtn">
+                  <Label resid="ConsistencyBtn.Label"/>
+                  <Supertip>
+                    <Title resid="ConsistencyBtn.Label"/>
+                    <Description resid="ConsistencyBtn.Tooltip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="ConsIc.16x16"/>
+                    <bt:Image size="32" resid="ConsIc.32x32"/>
+                    <bt:Image size="80" resid="ConsIc.80x80"/>
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>runFormulaConsistency</FunctionName>
+                  </Action>
+                </Control>
+              </Group>
+              <Group id="FormattingGroup">
+                <Label resid="FormattingGroup.Label"/>
+                <Icon>
+                  <bt:Image size="16" resid="FmtGrpIc.16x16"/>
+                  <bt:Image size="32" resid="FmtGrpIc.32x32"/>
+                  <bt:Image size="80" resid="FmtGrpIc.80x80"/>
+                </Icon>
+                <Control xsi:type="Button" id="CycleNumBtn">
+                  <Label resid="CycleNumBtn.Label"/>
+                  <Supertip>
+                    <Title resid="CycleNumBtn.Label"/>
+                    <Description resid="CycleNumBtn.Tooltip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="CycNumIc.16x16"/>
+                    <bt:Image size="32" resid="CycNumIc.32x32"/>
+                    <bt:Image size="80" resid="CycNumIc.80x80"/>
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>runCycleNumberFormat</FunctionName>
+                  </Action>
+                </Control>
+                <Control xsi:type="Button" id="CycleDateBtn">
+                  <Label resid="CycleDateBtn.Label"/>
+                  <Supertip>
+                    <Title resid="CycleDateBtn.Label"/>
+                    <Description resid="CycleDateBtn.Tooltip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="CycDateIc.16x16"/>
+                    <bt:Image size="32" resid="CycDateIc.32x32"/>
+                    <bt:Image size="80" resid="CycDateIc.80x80"/>
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>runCycleDateFormat</FunctionName>
+                  </Action>
+                </Control>
+                <Control xsi:type="Button" id="CycleCellBtn">
+                  <Label resid="CycleCellBtn.Label"/>
+                  <Supertip>
+                    <Title resid="CycleCellBtn.Label"/>
+                    <Description resid="CycleCellBtn.Tooltip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="CycCellIc.16x16"/>
+                    <bt:Image size="32" resid="CycCellIc.32x32"/>
+                    <bt:Image size="80" resid="CycCellIc.80x80"/>
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>runCycleCellFormat</FunctionName>
+                  </Action>
+                </Control>
+                <Control xsi:type="Button" id="CycleTextBtn">
+                  <Label resid="CycleTextBtn.Label"/>
+                  <Supertip>
+                    <Title resid="CycleTextBtn.Label"/>
+                    <Description resid="CycleTextBtn.Tooltip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="CycTextIc.16x16"/>
+                    <bt:Image size="32" resid="CycTextIc.32x32"/>
+                    <bt:Image size="80" resid="CycTextIc.80x80"/>
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>runCycleTextStyle</FunctionName>
+                  </Action>
+                </Control>
+                <Control xsi:type="Button" id="AutoColorBtn">
+                  <Label resid="AutoColorBtn.Label"/>
+                  <Supertip>
+                    <Title resid="AutoColorBtn.Label"/>
+                    <Description resid="AutoColorBtn.Tooltip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="AutoClrIc.16x16"/>
+                    <bt:Image size="32" resid="AutoClrIc.32x32"/>
+                    <bt:Image size="80" resid="AutoClrIc.80x80"/>
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>runAutoColor</FunctionName>
+                  </Action>
+                </Control>
+              </Group>
+              <Group id="SettingsGroup">
+                <Label resid="SettingsGroup.Label"/>
+                <Icon>
+                  <bt:Image size="16" resid="SetGrpIc.16x16"/>
+                  <bt:Image size="32" resid="SetGrpIc.32x32"/>
+                  <bt:Image size="80" resid="SetGrpIc.80x80"/>
+                </Icon>
+                <Control xsi:type="Button" id="TaskpaneButton">
+                  <Label resid="TaskpaneButton.Label"/>
+                  <Supertip>
+                    <Title resid="TaskpaneButton.Label"/>
+                    <Description resid="TaskpaneButton.Tooltip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="PaneIc.16x16"/>
+                    <bt:Image size="32" resid="PaneIc.32x32"/>
+                    <bt:Image size="80" resid="PaneIc.80x80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>ButtonId1</TaskpaneId>
+                    <SourceLocation resid="Taskpane.Url"/>
+                  </Action>
+                </Control>
+              </Group>
+              <Label resid="XLerateTab.Label"/>
+            </CustomTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+    <Resources>
+      <bt:Images>
+        <bt:Image id="Icon.16x16" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icon-16.png"/>
+        <bt:Image id="Icon.32x32" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icon-32.png"/>
+        <bt:Image id="Icon.80x80" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icon-80.png"/>
+        <bt:Image id="TracePrecIc.16x16" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icons/trace-precedents-16.png"/>
+        <bt:Image id="TracePrecIc.32x32" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icons/trace-precedents-32.png"/>
+        <bt:Image id="TracePrecIc.80x80" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icons/trace-precedents-80.png"/>
+        <bt:Image id="TraceDepIc.16x16" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icons/trace-dependents-16.png"/>
+        <bt:Image id="TraceDepIc.32x32" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icons/trace-dependents-32.png"/>
+        <bt:Image id="TraceDepIc.80x80" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icons/trace-dependents-80.png"/>
+        <bt:Image id="SwSignIc.16x16" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icons/switch-sign-16.png"/>
+        <bt:Image id="SwSignIc.32x32" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icons/switch-sign-32.png"/>
+        <bt:Image id="SwSignIc.80x80" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icons/switch-sign-80.png"/>
+        <bt:Image id="SmFillIc.16x16" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icons/smart-fill-16.png"/>
+        <bt:Image id="SmFillIc.32x32" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icons/smart-fill-32.png"/>
+        <bt:Image id="SmFillIc.80x80" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icons/smart-fill-80.png"/>
+        <bt:Image id="ConsIc.16x16" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icons/consistency-16.png"/>
+        <bt:Image id="ConsIc.32x32" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icons/consistency-32.png"/>
+        <bt:Image id="ConsIc.80x80" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icons/consistency-80.png"/>
+        <bt:Image id="CycNumIc.16x16" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icons/cycle-number-16.png"/>
+        <bt:Image id="CycNumIc.32x32" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icons/cycle-number-32.png"/>
+        <bt:Image id="CycNumIc.80x80" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icons/cycle-number-80.png"/>
+        <bt:Image id="CycDateIc.16x16" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icons/cycle-date-16.png"/>
+        <bt:Image id="CycDateIc.32x32" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icons/cycle-date-32.png"/>
+        <bt:Image id="CycDateIc.80x80" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icons/cycle-date-80.png"/>
+        <bt:Image id="CycCellIc.16x16" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icons/cycle-cell-16.png"/>
+        <bt:Image id="CycCellIc.32x32" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icons/cycle-cell-32.png"/>
+        <bt:Image id="CycCellIc.80x80" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icons/cycle-cell-80.png"/>
+        <bt:Image id="CycTextIc.16x16" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icons/cycle-text-16.png"/>
+        <bt:Image id="CycTextIc.32x32" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icons/cycle-text-32.png"/>
+        <bt:Image id="CycTextIc.80x80" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icons/cycle-text-80.png"/>
+        <bt:Image id="AutoClrIc.16x16" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icons/auto-color-16.png"/>
+        <bt:Image id="AutoClrIc.32x32" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icons/auto-color-32.png"/>
+        <bt:Image id="AutoClrIc.80x80" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icons/auto-color-80.png"/>
+        <bt:Image id="PaneIc.16x16" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icons/show-taskpane-16.png"/>
+        <bt:Image id="PaneIc.32x32" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icons/show-taskpane-32.png"/>
+        <bt:Image id="PaneIc.80x80" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icons/show-taskpane-80.png"/>
+        <bt:Image id="FmlGrpIc.16x16" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icons/group-formulas-16.png"/>
+        <bt:Image id="FmlGrpIc.32x32" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icons/group-formulas-32.png"/>
+        <bt:Image id="FmlGrpIc.80x80" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icons/group-formulas-80.png"/>
+        <bt:Image id="AudGrpIc.16x16" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icons/group-auditing-16.png"/>
+        <bt:Image id="AudGrpIc.32x32" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icons/group-auditing-32.png"/>
+        <bt:Image id="AudGrpIc.80x80" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icons/group-auditing-80.png"/>
+        <bt:Image id="FmtGrpIc.16x16" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icons/group-formatting-16.png"/>
+        <bt:Image id="FmtGrpIc.32x32" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icons/group-formatting-32.png"/>
+        <bt:Image id="FmtGrpIc.80x80" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icons/group-formatting-80.png"/>
+        <bt:Image id="SetGrpIc.16x16" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icons/group-settings-16.png"/>
+        <bt:Image id="SetGrpIc.32x32" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icons/group-settings-32.png"/>
+        <bt:Image id="SetGrpIc.80x80" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/assets/icons/group-settings-80.png"/>
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://github.com/omegarhovega/XLerate"/>
+        <bt:Url id="Taskpane.Url" DefaultValue="https://jiangucoco.github.io/XLerate-Custom/taskpane.html"/>
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="GetStarted.Title" DefaultValue="XLerate is ready"/>
+        <bt:String id="XLerateTab.Label" DefaultValue="XLerate"/>
+        <bt:String id="FormulasGroup.Label" DefaultValue="Formulas"/>
+        <bt:String id="AuditingGroup.Label" DefaultValue="Auditing"/>
+        <bt:String id="FormattingGroup.Label" DefaultValue="Formatting"/>
+        <bt:String id="SettingsGroup.Label" DefaultValue="Settings"/>
+        <bt:String id="TaskpaneButton.Label" DefaultValue="Show Task Pane"/>
+        <bt:String id="TracePrecBtn.Label" DefaultValue="Trace Precedents"/>
+        <bt:String id="TraceDepBtn.Label" DefaultValue="Trace Dependents"/>
+        <bt:String id="SwitchSignBtn.Label" DefaultValue="Switch Sign"/>
+        <bt:String id="SmartFillBtn.Label" DefaultValue="Smart Fill Right"/>
+        <bt:String id="InsertCagrBtn.Label" DefaultValue="Insert CAGR"/>
+        <bt:String id="ConsistencyBtn.Label" DefaultValue="Horizontal Check"/>
+        <bt:String id="CycleNumBtn.Label" DefaultValue="Cycle Number"/>
+        <bt:String id="CycleDateBtn.Label" DefaultValue="Cycle Date"/>
+        <bt:String id="CycleCellBtn.Label" DefaultValue="Cycle Cell"/>
+        <bt:String id="CycleTextBtn.Label" DefaultValue="Cycle Text Style"/>
+        <bt:String id="AutoColorBtn.Label" DefaultValue="Auto-color"/>
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="GetStarted.Description" DefaultValue="Open the XLerate tab to run modeling commands, or choose Show Task Pane to edit workbook settings."/>
+        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Open the XLerate task pane for settings and workbook-specific XLerate preferences."/>
+        <bt:String id="TracePrecBtn.Tooltip" DefaultValue="Open a keyboard-navigable dialog listing the precedents of the active cell. Arrow keys move Excel's selection live; Esc or Enter closes."/>
+        <bt:String id="TraceDepBtn.Tooltip" DefaultValue="Open a keyboard-navigable dialog listing the dependents of the active cell. Arrow keys move Excel's selection live; Esc or Enter closes."/>
+        <bt:String id="SwitchSignBtn.Tooltip" DefaultValue="Negate numbers or formulas in the selection. Text cells are unchanged. Ctrl+Z undoes the whole batch."/>
+        <bt:String id="SmartFillBtn.Tooltip" DefaultValue="Fill the active cell's formula to the right, bounded by the values in the three rows above the active row."/>
+        <bt:String id="InsertCagrBtn.Tooltip" DefaultValue="Insert a CAGR formula into the selected cell using the contiguous numeric series immediately to its left."/>
+        <bt:String id="ConsistencyBtn.Tooltip" DefaultValue="Mark formulas in the selection as consistent (green) or inconsistent (red) with their horizontal neighbors. Ctrl+Z removes the marks."/>
+        <bt:String id="CycleNumBtn.Tooltip" DefaultValue="Cycle the selection through the configured number-format presets."/>
+        <bt:String id="CycleDateBtn.Tooltip" DefaultValue="Cycle the selection through the configured date-format presets."/>
+        <bt:String id="CycleCellBtn.Tooltip" DefaultValue="Cycle the selection through cell-format presets (Normal, Inputs, Good, Bad, Important)."/>
+        <bt:String id="CycleTextBtn.Tooltip" DefaultValue="Cycle the selection through text-style presets (Heading, Subheading, Sum, Normal)."/>
+        <bt:String id="AutoColorBtn.Tooltip" DefaultValue="Color-code values in the selection by content type: blue for numeric inputs, green for cross-sheet references, orange for hyperlinks, black for local formulas."/>
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+  <ExtendedOverrides Url="https://jiangucoco.github.io/XLerate-Custom/shortcuts.json"/>
+</OfficeApp>

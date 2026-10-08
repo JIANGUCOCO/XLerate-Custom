@@ -1,0 +1,150 @@
+{
+  "actions": [
+    {
+      "id": "CycleNumberFormat",
+      "type": "ExecuteFunction",
+      "name": "Cycle number formats"
+    },
+    {
+      "id": "CycleCellFormat",
+      "type": "ExecuteFunction",
+      "name": "Cycle cell formats"
+    },
+    {
+      "id": "CycleDateFormat",
+      "type": "ExecuteFunction",
+      "name": "Cycle date formats"
+    },
+    {
+      "id": "CycleTextStyle",
+      "type": "ExecuteFunction",
+      "name": "Cycle text styles"
+    },
+    {
+      "id": "SmartFillRight",
+      "type": "ExecuteFunction",
+      "name": "Smart Fill Right"
+    },
+    {
+      "id": "ResetFormatSettings",
+      "type": "ExecuteFunction",
+      "name": "Reset format settings"
+    },
+    {
+      "id": "TracePrecedents",
+      "type": "ExecuteFunction",
+      "name": "Trace precedents"
+    },
+    {
+      "id": "TraceDependents",
+      "type": "ExecuteFunction",
+      "name": "Trace dependents"
+    },
+    {
+      "id": "SwitchSign",
+      "type": "ExecuteFunction",
+      "name": "Switch sign"
+    },
+    {
+      "id": "HorizontalCheck",
+      "type": "ExecuteFunction",
+      "name": "Horizontal formula check"
+    },
+    {
+      "id": "AutoColor",
+      "type": "ExecuteFunction",
+      "name": "Auto color formulas and inputs"
+    },
+    {
+      "id": "InsertCagr",
+      "type": "ExecuteFunction",
+      "name": "Insert CAGR formula"
+    }
+  ],
+  "shortcuts": [
+    {
+      "action": "CycleNumberFormat",
+      "key": {
+        "default": "Ctrl+Shift+1",
+        "mac": "Ctrl+Shift+1"
+      }
+    },
+    {
+      "action": "CycleCellFormat",
+      "key": {
+        "default": "Ctrl+Shift+2",
+        "mac": "Ctrl+Shift+2"
+      }
+    },
+    {
+      "action": "CycleDateFormat",
+      "key": {
+        "default": "Ctrl+Shift+3",
+        "mac": "Ctrl+Shift+3"
+      }
+    },
+    {
+      "action": "CycleTextStyle",
+      "key": {
+        "default": "Ctrl+Shift+4",
+        "mac": "Ctrl+Shift+4"
+      }
+    },
+    {
+      "action": "SmartFillRight",
+      "key": {
+        "default": "Ctrl+Shift+R",
+        "mac": "Ctrl+Shift+R"
+      }
+    },
+    {
+      "action": "ResetFormatSettings",
+      "key": {
+        "default": "Ctrl+Shift+0",
+        "mac": "Ctrl+Shift+0"
+      }
+    },
+    {
+      "action": "TracePrecedents",
+      "key": {
+        "default": "Ctrl+Alt+Shift+Q",
+        "mac": "Ctrl+Alt+Shift+Q"
+      }
+    },
+    {
+      "action": "TraceDependents",
+      "key": {
+        "default": "Ctrl+Alt+Shift+W",
+        "mac": "Ctrl+Alt+Shift+W"
+      }
+    },
+    {
+      "action": "SwitchSign",
+      "key": {
+        "default": "Ctrl+Alt+Shift+S",
+        "mac": "Ctrl+Alt+Shift+S"
+      }
+    },
+    {
+      "action": "HorizontalCheck",
+      "key": {
+        "default": "Ctrl+Alt+Shift+H",
+        "mac": "Ctrl+Alt+Shift+H"
+      }
+    },
+    {
+      "action": "AutoColor",
+      "key": {
+        "default": "Ctrl+Alt+Shift+A",
+        "mac": "Ctrl+Alt+Shift+A"
+      }
+    },
+    {
+      "action": "InsertCagr",
+      "key": {
+        "default": "Ctrl+Alt+Shift+G",
+        "mac": "Ctrl+Alt+Shift+G"
+      }
+    }
+  ]
+}
