@@ -108,42 +108,42 @@
       "action": "TracePrecedents",
       "key": {
         "default": "Ctrl+Alt+Shift+Q",
-        "mac": "Ctrl+Alt+Shift+Q"
+        "mac": "Command+Option+Shift+Q"
       }
     },
     {
       "action": "TraceDependents",
       "key": {
         "default": "Ctrl+Alt+Shift+W",
-        "mac": "Ctrl+Alt+Shift+W"
+        "mac": "Command+Option+Shift+W"
       }
     },
     {
       "action": "SwitchSign",
       "key": {
         "default": "Ctrl+Alt+Shift+S",
-        "mac": "Ctrl+Alt+Shift+S"
+        "mac": "Command+Option+Shift+S"
       }
     },
     {
       "action": "HorizontalCheck",
       "key": {
         "default": "Ctrl+Alt+Shift+H",
-        "mac": "Ctrl+Alt+Shift+H"
+        "mac": "Command+Option+Shift+H"
       }
     },
     {
       "action": "AutoColor",
       "key": {
         "default": "Ctrl+Alt+Shift+A",
-        "mac": "Ctrl+Alt+Shift+A"
+        "mac": "Command+Option+Shift+A"
       }
     },
     {
       "action": "InsertCagr",
       "key": {
         "default": "Ctrl+Alt+Shift+G",
-        "mac": "Ctrl+Alt+Shift+G"
+        "mac": "Command+Option+Shift+G"
       }
     }
   ]
