@@ -310,7 +310,7 @@
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="GetStarted.Title" DefaultValue="XLerate is ready"/>
-        <bt:String id="XLerateTab.Label" DefaultValue="XLerate"/>
+        <bt:String id="XLerateTab.Label" DefaultValue="XLerate Custom"/>
         <bt:String id="FormulasGroup.Label" DefaultValue="Formulas"/>
         <bt:String id="AuditingGroup.Label" DefaultValue="Auditing"/>
         <bt:String id="FormattingGroup.Label" DefaultValue="Formatting"/>
